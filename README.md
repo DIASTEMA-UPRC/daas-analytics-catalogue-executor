@@ -1,1 +1,1 @@
-# diastema-daas-analytics-catalogue-executor
+# daas-analytics-catalogue-executor
