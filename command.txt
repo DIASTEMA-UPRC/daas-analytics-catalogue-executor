@@ -1,0 +1,4 @@
+spark-submit \
+--conf spark.executorEnv.MINIO_HOST="daas-analytics-catalogue-executor-minio" \
+--conf spark.executorEnv.MINIO_PORT="9000" \
+src/main.py

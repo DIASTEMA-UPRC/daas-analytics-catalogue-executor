@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  minio:
+    container_name: daas-analytics-catalogue-executor-minio
+    image: minio/minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command: server /data --address ":9000" --console-address ":9001"
+    restart: always
+  mongo:
+    container_name: daas-analytics-catalogue-executor-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: always
+  base:
+    container_name: daas-analytics-catalogue-executor-base
+    image: konvoulgaris/diastema-daas-analytics-catalogue
+    depends_on:
+      - minio
+      - mongo
+    command: tail -F random
+    restart: always
+  executor:
+      container_name: daas-analytics-catalogue-executor
+      build:
+        context: .
+        dockerfile: ./Dockerfile.dev
+      image: daas-analytics-catalogue-executor:dev
+      ports:
+        - 5000:5000
+      volumes:
+        - ./src:/app/src
+      depends_on:
+        - minio
+        - mongo
+        - base
+      command: tail -F random
+      restart: always
