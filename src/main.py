@@ -54,7 +54,7 @@ def predict():
     df = pd.read_csv(StringIO(raw))
     data = g.spark.createDataFrame(df)
     pred = model.transform(data)
-    out = pred.select(*[c for c in pred.columns if c != "features"])
+    out = pred.select(*[c for c in pred.columns if (c in data.columns and c != "features") or c == "prediction"])
 
     return out.toPandas().to_csv(index=False)
 
