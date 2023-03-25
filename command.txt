@@ -1,4 +1,14 @@
 spark-submit \
 --conf spark.executorEnv.MINIO_HOST="daas-analytics-catalogue-executor-minio" \
 --conf spark.executorEnv.MINIO_PORT="9000" \
+--conf spark.executorEnv.MONGO_HOST="daas-analytics-catalogue-executor-mongo" \
+--conf spark.executorEnv.MONGO_PORT="27017" \
+src/...
+
+
+spark-submit \
+--conf spark.executorEnv.MINIO_HOST="daas-analytics-catalogue-executor-minio" \
+--conf spark.executorEnv.MINIO_PORT="9000" \
+--conf spark.executorEnv.MONGO_HOST="daas-analytics-catalogue-executor-mongo" \
+--conf spark.executorEnv.MONGO_PORT="27017" \
 src/main.py

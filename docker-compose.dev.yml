@@ -17,7 +17,7 @@ services:
     restart: always
   base:
     container_name: daas-analytics-catalogue-executor-base
-    image: konvoulgaris/diastema-daas-analytics-catalogue
+    image: daasdiastemaanalyticscatalogue:latest
     depends_on:
       - minio
       - mongo
