@@ -121,5 +121,8 @@ def error(ex: Exception):
 
 
 if __name__ == "__main__":
-    server = make_server("0.0.0.0", 5000, app)
+    spark = get_spark()
+    host = spark.conf.get("spark.executorEnv.FLASK_HOST", "0.0.0.0")
+    port = spark.conf.get("spark.executorEnv.FLASK_PORT", "5000")
+    server = make_server(host, port, app)
     server.serve_forever()
