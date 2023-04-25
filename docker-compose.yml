@@ -25,7 +25,7 @@ services:
     restart: always
   executor:
       container_name: daas-analytics-catalogue-executor
-      image: konvoulgaris/daas-analytics-catalogue-executor
+      image: konvoulgaris/diastema-daas-analytics-catalogue-executor
       volumes:
         - ./src:/app/src
       depends_on:

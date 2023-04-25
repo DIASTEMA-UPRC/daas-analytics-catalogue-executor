@@ -6,4 +6,3 @@ WORKDIR /app
 ADD requirements.txt .
 RUN pip install -r requirements.txt
 ADD src src
-EXPOSE 5000
