@@ -60,8 +60,8 @@ def start(job_id: str):
     return "Loaded model successfully"
 
 
-@app.route("/stop/<job_id>", methods=["GET"])
-def stop(job_id: str):
+@app.route("/kill", methods=["GET"])
+def stop():
     global model
     model = None
     g.pop("db", None)
